@@ -8,9 +8,9 @@ RUN cd apache-ctakes-4.0.0-src/ctakes-assertion-zoner && mvn install -Dmaven.tes
 RUN cd /ctakes-web-rest && mvn install -Dmaven.test.skip=true
 
 
-FROM aallam/tomcat-mysql
+FROM tomcat:9-jdk8
 
-COPY --from=build-ctakes /tmp/ctakes-web-rest/target/*.war /usr/local/tomcat/webapps/
+COPY --from=build-ctakes /ctakes-web-rest/target/*.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
