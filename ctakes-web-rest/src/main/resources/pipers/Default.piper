@@ -4,6 +4,9 @@
 // set the thread count
 // threads 3
 
+add ContextDependentTokenizerAnnotator
+add POSTagger
+
 // Load a simple token processing pipeline from another pipeline file
 // load pipers/TsDefaultTokenizerPipeline
 add SimpleSegmentAnnotator
@@ -39,12 +42,12 @@ add DefaultJCasTermAnnotator LookupXml=org/apache/ctakes/dictionary/lookup/fast/
 package org.apache.ctakes.assertion.medfacts.cleartk
 
 // Add the cleartk attribute engines, logging for them as a block
-add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes" IS_START=true
+// add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes" IS_START=true
 addDescription PolarityCleartkAnalysisEngine
 addDescription UncertaintyCleartkAnalysisEngine
 addDescription HistoryCleartkAnalysisEngine
 addDescription ConditionalCleartkAnalysisEngine
 addDescription GenericCleartkAnalysisEngine
 addDescription SubjectCleartkAnalysisEngine
-add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes"
+// add StartFinishLogger LOGGER_NAME=CleartkAnalysisEngine LOGGER_TASK="Assigning Attributes"
 
