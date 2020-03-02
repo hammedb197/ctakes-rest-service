@@ -14,5 +14,5 @@ docker-compose up
 ```
 * Yes, again.
 * Access it at the port specified in docker-compose.yml
-* You can delete the builder image with will be approximately 17 GB
+* You can delete the builder image which is approximately 17 GB
 * The final ctakes container is below 2 GB
