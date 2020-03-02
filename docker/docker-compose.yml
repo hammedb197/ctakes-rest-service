@@ -7,7 +7,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-      - ./sno_rx_16ab_db:/docker-entrypoint-initdb.d
+      - ../sno_rx_16ab_db:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: pass
 

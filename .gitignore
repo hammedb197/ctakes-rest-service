@@ -5,3 +5,7 @@ ctakes-build-area/*
 org
 data
 umls.env
+docker/umls.env
+.settings
+.classpath
+ctakes-web-rest/target/*

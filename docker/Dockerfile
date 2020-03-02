@@ -13,8 +13,10 @@ RUN cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distributio
 
 FROM tomcat:9-jdk8
 
-COPY --from=build-ctakes /ctakes /ctakes
-RUN cp /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /usr/local/tomcat/webapps/
+# COPY --from=build-ctakes /ctakes /ctakes
+# RUN cp /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /usr/local/tomcat/webapps/
+COPY --from=build-ctakes /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /usr/local/tomcat/webapps/
+
 ENV CTAKES_HOME=/ctakes
 
 
