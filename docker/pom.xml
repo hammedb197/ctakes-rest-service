@@ -125,7 +125,7 @@
 		<maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
 		<maven-surefire-plugin.version>2.12.1</maven-surefire-plugin.version>
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
-		<mysql-connector.version>8.0.19</mysql-connector.version>
+		<mysql-connector.version>5.1.44</mysql-connector.version>
 		<scala-library.version>2.11.7</scala-library.version>
 		<scala-tools.version>0.4.0</scala-tools.version>
 		<servlet-jsp-api.version>2.2</servlet-jsp-api.version>
