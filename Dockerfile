@@ -1,16 +1,22 @@
 FROM maven:3-jdk-8 as build-ctakes
 
-WORKDIR /tmp
-COPY ./ctakes-web-rest /ctakes-web-rest
-RUN wget -qO- http://muug.ca/mirror/apache-dist//ctakes/ctakes-4.0.0/apache-ctakes-4.0.0-src.tar.gz | tar xvz 
-RUN cd apache-ctakes-4.0.0-src/ctakes-distribution && mvn install -Dmaven.test.skip=true
-RUN cd apache-ctakes-4.0.0-src/ctakes-assertion-zoner && mvn install -Dmaven.test.skip=true
-RUN cd /ctakes-web-rest && mvn install -Dmaven.test.skip=true
+RUN git clone https://github.com/apache/ctakes ctakes
 
+COPY customDictionary.xml /ctakes/ctakes-web-rest/src/main/resources/org/apache/ctakes/dictionary/lookup/fast/
+COPY pom.xml /ctakes
+
+# This version of the default piper comments out a memory-intensive negation module. If you need to run
+# negation detection, then comment out this line.
+COPY Default.piper /ctakes/ctakes-web-rest/src/main/resources/pipers/
+
+RUN cd ctakes && mvn compile -DskipTests && mvn install -pl '!ctakes-distribution'  -DskipTests
 
 FROM tomcat:9-jdk8
 
-COPY --from=build-ctakes /ctakes-web-rest/target/*.war /usr/local/tomcat/webapps/
+COPY --from=build-ctakes /ctakes /ctakes
+RUN cp /ctakes/ctakes-web-rest/target/ctakes-web-rest.war /usr/local/tomcat/webapps/
+ENV CTAKES_HOME=/ctakes
+
 
 EXPOSE 8080
 

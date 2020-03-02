@@ -17,3 +17,7 @@ services:
     restart: always
     ports:
       - 8093:8080
+    env_file:
+      - umls.env
+    depends_on: 
+      - db
