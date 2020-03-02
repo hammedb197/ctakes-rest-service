@@ -9,3 +9,4 @@ docker/umls.env
 .settings
 .classpath
 ctakes-web-rest/target/*
+.vscode

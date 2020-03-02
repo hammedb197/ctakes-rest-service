@@ -4,6 +4,11 @@ The goal of this solution is to provide a JSON-based REST service to process uns
 
 ![img](./demo.png)
 
+## Changes in this fork
+
+* Created the docker folder. See the folder for instructions.
+
+
 ## Install
                                                                                                                                                                                                                                           
 _(Based on Ubuntu 18.04)_
