@@ -4,7 +4,7 @@
 * Add UMLS credentials to umls.env
 * Change the port and the image name in docker-compose.yml if required
 ```
-docker-compose up
+docker-compose up db
 ```
 * This will fail first time as database is created
 * Wait till database is created. This may take few minutes.
