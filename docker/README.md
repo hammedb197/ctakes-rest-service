@@ -6,7 +6,7 @@
 ```
 docker-compose up db
 ```
-* This will fail first time as database is created
+* This will create database
 * Wait till database is created. This may take few minutes.
 * Ctrl-C to stop containers
 ```
