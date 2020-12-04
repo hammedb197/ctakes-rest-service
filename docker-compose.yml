@@ -3,17 +3,31 @@ version: '3.1'
 services:
 
   db:
-    image: mysql
+    image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
+      - db_data:/var/lib/mysql
       - ./sno_rx_16ab_db:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: umls
+      MYSQL_USER: root
+      MYSQL_PASSWORD: pass
 
   ctakes:
     build: .
+    environment:
+      VIRTUAL_HOST: ctakes_webserver
+      VIRTUAL_PORT: 8080
+      JDBC_URL: jdbc:mysql://db:3306/umls?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+      JDBC_USER: root
+      JDBC_PASS: pass
+      
     image: beapen/ctakes
     restart: always
     ports:
       - 8093:8080
+
+volumes:
+  db_data:
